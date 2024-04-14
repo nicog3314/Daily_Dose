@@ -12,6 +12,7 @@ struct BulkMealsView: View {
     var body: some View {
         
         NavigationView {
+            
                     List {
                         ForEach(viewModel.meals) { meal in
                             DisclosureGroup {
@@ -37,12 +38,13 @@ struct BulkMealsView: View {
                                 }
                             }
                         }
+                        
                     }
                     .onAppear {
                         viewModel.fetchBulkMeals()
                     }
-                }
-            }
+        }
+    }
 }
 
 

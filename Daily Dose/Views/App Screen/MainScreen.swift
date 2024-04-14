@@ -20,7 +20,6 @@ struct MainScreen: View {
             ZStack {
                 Color(.lightGray).ignoresSafeArea()
                 
-                // Your existing content here
                 NavigationLink(
                     destination: UserAccSetting(),
                     label: {
@@ -59,9 +58,18 @@ struct MainScreen: View {
                     BulkMealsView()
                         .frame(width:400, height:600)
                         .padding()
+                        .cornerRadius(15)
+                        .position(x: 200, y: 550)
                 }
                 else if userHealthGoal == "cut"{
                     CutMealsView()
+                }
+                else{
+                    VStack {
+                        Text("Go to Questionnaire!")
+                        Text("Set your goal!")
+                    }
+                   
                 }
             }
             .onAppear {

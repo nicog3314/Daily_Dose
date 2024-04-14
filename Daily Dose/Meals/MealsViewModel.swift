@@ -69,5 +69,27 @@ class MealsViewModel: ObservableObject{
         ])
     }
     
+    func fetchCutMeals() {
+        db.collection("cutMeals").addSnapshotListener { (querySnapshot, error) in
+            guard let documents = querySnapshot?.documents else{
+                print("No documents")
+                return
+            }
+            
+            self.meals = documents.map { (queryDocumentSnapshot) -> Meals in
+                let data = queryDocumentSnapshot.data()
+                
+                let name = data["name"] as? String ?? ""
+                let ingredient = data["ingredients"] as? [String] ?? [""]
+                let calories = data["calories"] as? Int ?? 0
+                let protein = data["proteins"] as? Int ?? 0
+                let carbs = data["carbs"] as? Int ?? 0
+                let fats = data["fats"] as? Int ?? 0
+                let imageURL = data["imageURL"] as? String ?? ""
+
+                return Meals(name: name, ingredient: ingredient, calories: calories, protein: protein, carbs: carbs, fats: fats, imageURL: imageURL)
+            }
+        }
+    }
 }
 
