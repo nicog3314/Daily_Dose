@@ -16,6 +16,10 @@
 		930FD0B32BCB808100801EA6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 930FD0B22BCB808100801EA6 /* FirebaseFirestore */; };
 		930FD0B52BCB808100801EA6 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 930FD0B42BCB808100801EA6 /* FirebaseFirestoreSwift */; };
 		930FD0B72BCB808100801EA6 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 930FD0B62BCB808100801EA6 /* FirebaseStorage */; };
+		930FD0BA2BCE033800801EA6 /* WorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930FD0B92BCE033800801EA6 /* WorkoutView.swift */; };
+		930FD0BD2BCE036F00801EA6 /* Workouts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930FD0BC2BCE036F00801EA6 /* Workouts.swift */; };
+		930FD0BF2BCE042E00801EA6 /* WorkoutsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930FD0BE2BCE042E00801EA6 /* WorkoutsViewModel.swift */; };
+		930FD0C12BD0615D00801EA6 /* AdminAccSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 930FD0C02BD0615D00801EA6 /* AdminAccSetting.swift */; };
 		934708B52BAA60F500FE013A /* UserAccSetting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 934708B42BAA60F500FE013A /* UserAccSetting.swift */; };
 		935FC5482B7C239D00E0C025 /* Daily_DoseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935FC5472B7C239D00E0C025 /* Daily_DoseApp.swift */; };
 		935FC54C2B7C239D00E0C025 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 935FC54B2B7C239D00E0C025 /* Item.swift */; };
@@ -29,7 +33,6 @@
 		93DE2A1F2B7DD238006BEFAB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DE2A1E2B7DD238006BEFAB /* User.swift */; };
 		93FCA8C02B7F16D20058D010 /* LogInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FCA8BF2B7F16D10058D010 /* LogInView.swift */; };
 		93FCA8C32B8C15F10058D010 /* CreateAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FCA8C22B8C15F10058D010 /* CreateAccount.swift */; };
-		93FCA8C82B8C2EBF0058D010 /* Questionnaire.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FCA8C72B8C2EBF0058D010 /* Questionnaire.swift */; };
 		93FCA8CF2B8C3A9E0058D010 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FCA8CE2B8C3A9E0058D010 /* InputView.swift */; };
 		93FCA8D22B8C4B2D0058D010 /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FCA8D12B8C4B2D0058D010 /* MainScreen.swift */; };
 		93FCA8D52B8ED86E0058D010 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93FCA8D42B8ED86E0058D010 /* AuthView.swift */; };
@@ -37,6 +40,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		930FD0B92BCE033800801EA6 /* WorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutView.swift; sourceTree = "<group>"; };
+		930FD0BC2BCE036F00801EA6 /* Workouts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workouts.swift; sourceTree = "<group>"; };
+		930FD0BE2BCE042E00801EA6 /* WorkoutsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutsViewModel.swift; sourceTree = "<group>"; };
+		930FD0C02BD0615D00801EA6 /* AdminAccSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AdminAccSetting.swift; path = "Daily Dose/Views/App Screen/Acc Settings/AdminAccSetting.swift"; sourceTree = SOURCE_ROOT; };
 		934708B42BAA60F500FE013A /* UserAccSetting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAccSetting.swift; sourceTree = "<group>"; };
 		935FC5442B7C239D00E0C025 /* Daily Dose.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Daily Dose.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		935FC5472B7C239D00E0C025 /* Daily_DoseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Daily_DoseApp.swift; path = "Daily Dose/App/Daily_DoseApp.swift"; sourceTree = SOURCE_ROOT; };
@@ -48,10 +55,9 @@
 		936D15282BC62F9A004DFB29 /* MealsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsViewModel.swift; sourceTree = "<group>"; };
 		936D152B2BC630F2004DFB29 /* Meals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meals.swift; sourceTree = "<group>"; };
 		936D15302BCB7E77004DFB29 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		93DE2A1E2B7DD238006BEFAB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = "Daily Dose/User.swift"; sourceTree = SOURCE_ROOT; };
+		93DE2A1E2B7DD238006BEFAB /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = User.swift; path = "Daily Dose/AuthViewModel/User.swift"; sourceTree = SOURCE_ROOT; };
 		93FCA8BF2B7F16D10058D010 /* LogInView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogInView.swift; sourceTree = "<group>"; };
 		93FCA8C22B8C15F10058D010 /* CreateAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccount.swift; sourceTree = "<group>"; };
-		93FCA8C72B8C2EBF0058D010 /* Questionnaire.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questionnaire.swift; sourceTree = "<group>"; };
 		93FCA8CE2B8C3A9E0058D010 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		93FCA8D12B8C4B2D0058D010 /* MainScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
 		93FCA8D42B8ED86E0058D010 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -78,11 +84,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		930FD0B82BCE031E00801EA6 /* Workout Screen */ = {
+			isa = PBXGroup;
+			children = (
+				930FD0B92BCE033800801EA6 /* WorkoutView.swift */,
+			);
+			path = "Workout Screen";
+			sourceTree = "<group>";
+		};
+		930FD0BB2BCE036000801EA6 /* Workouts */ = {
+			isa = PBXGroup;
+			children = (
+				930FD0BC2BCE036F00801EA6 /* Workouts.swift */,
+				930FD0BE2BCE042E00801EA6 /* WorkoutsViewModel.swift */,
+			);
+			path = Workouts;
+			sourceTree = "<group>";
+		};
+		930FD0C52BD7E76300801EA6 /* Acc Settings */ = {
+			isa = PBXGroup;
+			children = (
+				930FD0C02BD0615D00801EA6 /* AdminAccSetting.swift */,
+				934708B42BAA60F500FE013A /* UserAccSetting.swift */,
+			);
+			path = "Acc Settings";
+			sourceTree = "<group>";
+		};
 		93565E7F2BB34D0F0086D558 /* App Screen */ = {
 			isa = PBXGroup;
 			children = (
-				936D15232BC610D7004DFB29 /* Meal Screens */,
 				93FCA8D12B8C4B2D0058D010 /* MainScreen.swift */,
+				930FD0C52BD7E76300801EA6 /* Acc Settings */,
+				936D15232BC610D7004DFB29 /* Meal Screens */,
+				930FD0B82BCE031E00801EA6 /* Workout Screen */,
 			);
 			path = "App Screen";
 			sourceTree = "<group>";
@@ -145,8 +179,8 @@
 		93FCA8C12B869E5A0058D010 /* Logic */ = {
 			isa = PBXGroup;
 			children = (
+				930FD0BB2BCE036000801EA6 /* Workouts */,
 				936D15202BC5A148004DFB29 /* Meals */,
-				93DE2A1E2B7DD238006BEFAB /* User.swift */,
 				93FCA8D32B8ED8580058D010 /* AuthViewModel */,
 			);
 			name = Logic;
@@ -158,7 +192,6 @@
 				93565E7F2BB34D0F0086D558 /* App Screen */,
 				93FCA8CD2B8C3A940058D010 /* ShortCuts */,
 				93FCA8CA2B8C379E0058D010 /* Authentication */,
-				93FCA8CC2B8C37AC0058D010 /* Profile */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -182,15 +215,6 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
-		93FCA8CC2B8C37AC0058D010 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				934708B42BAA60F500FE013A /* UserAccSetting.swift */,
-				93FCA8C72B8C2EBF0058D010 /* Questionnaire.swift */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
 		93FCA8CD2B8C3A940058D010 /* ShortCuts */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +226,7 @@
 		93FCA8D32B8ED8580058D010 /* AuthViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				93DE2A1E2B7DD238006BEFAB /* User.swift */,
 				93FCA8D42B8ED86E0058D010 /* AuthView.swift */,
 			);
 			path = AuthViewModel;
@@ -294,17 +319,20 @@
 			files = (
 				93FCA8D22B8C4B2D0058D010 /* MainScreen.swift in Sources */,
 				93DE2A1F2B7DD238006BEFAB /* User.swift in Sources */,
+				930FD0BF2BCE042E00801EA6 /* WorkoutsViewModel.swift in Sources */,
+				930FD0BA2BCE033800801EA6 /* WorkoutView.swift in Sources */,
 				93FCA8CF2B8C3A9E0058D010 /* InputView.swift in Sources */,
 				934708B52BAA60F500FE013A /* UserAccSetting.swift in Sources */,
 				935FC54C2B7C239D00E0C025 /* Item.swift in Sources */,
 				93FCA8C32B8C15F10058D010 /* CreateAccount.swift in Sources */,
 				93FCA8C02B7F16D20058D010 /* LogInView.swift in Sources */,
 				93FCA90E2B96966B0058D010 /* ContentView.swift in Sources */,
+				930FD0C12BD0615D00801EA6 /* AdminAccSetting.swift in Sources */,
 				936D15292BC62F9A004DFB29 /* MealsViewModel.swift in Sources */,
 				936D152C2BC630F2004DFB29 /* Meals.swift in Sources */,
+				930FD0BD2BCE036F00801EA6 /* Workouts.swift in Sources */,
 				935FC5482B7C239D00E0C025 /* Daily_DoseApp.swift in Sources */,
 				936D15272BC61327004DFB29 /* CutMealsView.swift in Sources */,
-				93FCA8C82B8C2EBF0058D010 /* Questionnaire.swift in Sources */,
 				93FCA8D52B8ED86E0058D010 /* AuthView.swift in Sources */,
 				936D15252BC610F0004DFB29 /* BulkMealsView.swift in Sources */,
 			);

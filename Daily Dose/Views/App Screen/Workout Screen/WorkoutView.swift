@@ -1,29 +1,27 @@
 //
-//  BulkMealsView.swift
+//  WorkoutView.swift
 //  Daily Dose
 //
-//  Created by Nicole Gonzalez on 4/9/24.
+//  Created by Nicole Gonzalez on 4/15/24.
 //
 
 import SwiftUI
 
-struct BulkMealsView: View {
-    @ObservedObject private var bulkViewModel = MealsViewModel()
-    @EnvironmentObject var viewModel:AuthView
+struct WorkoutView: View {
+    @ObservedObject var workoutViewModel = WorkoutsViewModel()
+    
     var body: some View {
-        
         NavigationView {
             //list of all bulk meals
-           
             List {
                 Section("") {
-                    ForEach(bulkViewModel.meals) { meal in
+                    ForEach(workoutViewModel.workouts) { workout in
                         NavigationLink {
-                            BulkMealInfo(meal: meal)
+                            WorkoutInfo(workout: workout)
                         } label: {
                             HStack {
                                 // Image of the meal
-                                AsyncImage(url: URL(string: meal.imageURL)) { image in
+                                AsyncImage(url: URL(string: workout.imageURL)) { image in
                                     image
                                         .resizable()
                                         .scaledToFill()
@@ -36,7 +34,7 @@ struct BulkMealsView: View {
                                 .shadow(radius: 10)
                                 
                                 // Name of the meal
-                                Text(meal.name)
+                                Text(workout.name)
                                     .font(.title3).bold()
                             }
                         }
@@ -44,23 +42,17 @@ struct BulkMealsView: View {
                 }
             }
             .onAppear {
-                bulkViewModel.fetchBulkMeals()
+                workoutViewModel.fetchWorkouts()
             }
-            .navigationTitle("Time to Bulk Out!")
-            
+            .navigationTitle("Get the sweat going!")
         }
-        
-        
-        
     }
 }
-
-
-struct BulkMealInfo: View {
-    let meal: Meals
-    var body: some View {
+struct WorkoutInfo:View{
+    let workout:Workouts
+    var body: some View{
         VStack(spacing: 10) {
-            AsyncImage(url: URL(string: meal.imageURL)) { image in
+            AsyncImage(url: URL(string: workout.imageURL)) { image in
                 image
                     .resizable()
                     .scaledToFill()
@@ -71,20 +63,20 @@ struct BulkMealInfo: View {
             }
             .shadow(radius: 10)
                 
-            Text("Ingredients: \(meal.ingredient.joined(separator: ", "))")
+            Text("Name: \(workout.name)")
                 .fontWeight(.medium)
-            Text("Calories: \(meal.calories)")
+            Text("Muscle Group: \(workout.muscleGroup)")
                 .fontWeight(.medium)
-            Text("Fats: \(meal.fats)g")
+            Text("Reps: \(workout.reps)")
                 .fontWeight(.medium)
-            Text("Protein: \(meal.protein)g")
-                .fontWeight(.medium)
-            Text("Carbs: \(meal.carbs)g")
+            Text("Tips: \(workout.tips.joined(separator: "\n"))")
                 .fontWeight(.medium)
         }
-        .padding()
+            .padding()
     }
 }
+
+
 #Preview {
-    BulkMealsView()
+    WorkoutView()
 }

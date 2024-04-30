@@ -11,74 +11,84 @@ import Firebase
 struct MainScreen: View {
     let mainColor: Color = Color(red: 0.876, green: 0.911, blue: 0.762)
     @EnvironmentObject var viewModel: AuthView
-    
     @State private var userHealthGoal: String = ""
+    @State private var isAdmin:String = ""
     
-    @State private var healthGoal: String = ""
     var body: some View {
         NavigationStack() {
             ZStack {
-                Color(.lightGray).ignoresSafeArea()
-                
-                NavigationLink(
-                    destination: UserAccSetting(),
-                    label: {
-                        Text("Account Settings")
-                            .foregroundColor(mainColor)
-                            .bold()
-                            .background(
-                                RoundedRectangle(cornerRadius: 10.0, style: .continuous)
-                                    .stroke(lineWidth: 2)
-                                    .foregroundColor(.black)
-                                    .frame(width: 176, height: 20)
-                            )
-                    }
-                )
-                .position(x: 300, y: 50)
-                
-                NavigationLink(
-                    destination: Questionnaire(),
-                    label: {
-                        Text("Questionnaire")
-                            .foregroundColor(mainColor)
-                            .bold()
-                            .background(
-                                RoundedRectangle(cornerRadius: 10.0, style: .continuous)
-                                    .stroke(lineWidth: 2)
-                                    .foregroundColor(.black)
-                                    .frame(width: 176, height: 20)
-                            )
-                    }
-                )
-                .position(x: 300, y: 70)
-                .navigationBarBackButtonHidden()
-                
                 // Adding BulkMealsView if user's health goal is "bulk"
-                if userHealthGoal == "bulk" {
-                    BulkMealsView()
-                        .frame(width:400, height:600)
-                        .padding()
-                        .cornerRadius(15)
-                        .position(x: 200, y: 550)
-                }
-                else if userHealthGoal == "cut"{
-                    CutMealsView()
-                }
-                else{
-                    VStack {
-                        Text("Go to Questionnaire!")
-                        Text("Set your goal!")
+                TabView  {
+                    Group {
+                        if userHealthGoal == "bulk" {
+                            BulkMealsView()
+                                .cornerRadius(15)
+                                .scrollContentBackground(.hidden)
+                                .tabItem {
+                                    Label("Meals", systemImage: "fork.knife")
+                                }
+                        }
+                        else if userHealthGoal == "cut"{
+                            CutMealsView()
+                                .cornerRadius(15)
+                                .scrollContentBackground(.hidden)
+                                .tabItem {
+                                    Label("Meals", systemImage: "fork.knife")
+                                }
+                        }
+                        else{
+                            VStack {
+                                Text("Set your goal!")
+                                Text("Go to Settings!")
+                                
+                            }.tabItem {
+                                Label("Meals", systemImage: "fork.knife")
+                            }
+                        }
+                    }//fetching the user health goal when screen appears
+                    .onAppear {
+                        Task {
+                            do {
+                                let fetch = try await fetchGoal()
+                                self.userHealthGoal = fetch
+                            } catch {
+                                print("DEBUG: CANNOT GET HEALTHGOAL/HEALTHGOAL NOT SET")
+                            }
+                        }
                     }
-                   
-                }
-            }
-            .onAppear {
-                Task {
-                    do {
-                        let fetch = try await fetchGoal()
-                        self.userHealthGoal = fetch
-                    } catch {
-                        print("DEBUG: CANNOT GET HEALTHGOAL")
+                            WorkoutView()
+                                .tabItem {
+                                    Label("Workouts", systemImage: "dumbbell")
+                                }
+                            
+                    Group{
+                        if isAdmin == "true" {
+                            AdminAccSetting()
+                            .tabItem {
+                                if let user = viewModel.currentUser{
+                                    Label("\(user.first)", systemImage: "person.fill")
+                                }
+                            }
+                        }
+                        else {
+                            UserAccSetting()
+                                .tabItem {
+                                    if let user = viewModel.currentUser{
+                                        Label("\(user.first)", systemImage: "person.fill")
+                                    }
+                                }
+                        }
+                    }
+                    .onAppear{
+                        Task{
+                            do{
+                                let fetch = try await fetchAdmin()
+                                self.isAdmin = fetch
+                            }catch{
+                                print("DEBUG: ADMIN STATUS NOT FOUND")
+                            }
+                        }
+                        
                     }
                 }
             }
@@ -88,7 +98,7 @@ struct MainScreen: View {
 
 
 func fetchGoal() async throws  -> String{
-    guard let uid = Auth.auth().currentUser?.uid else { throw NSError(domain: "com.example.app", code: 0)}
+    guard let uid = Auth.auth().currentUser?.uid else { throw NSError(domain: "com.yourcompany.dailyDose", code: 0)}
     
     let userDB = Firestore.firestore().collection("user").document(uid)
     let snapshot = try await userDB.getDocument()
@@ -96,10 +106,23 @@ func fetchGoal() async throws  -> String{
     if let healthGoal = snapshot.get("healthGoal") as? String{
         return healthGoal //return healthGoal if found
     }else{
-        throw NSError(domain: "com.example.app", code: 0, userInfo:[NSLocalizedDescriptionKey:"Health goal cannot be found"])
+        throw NSError(domain: "com.yourcompany.dailyDose", code: 0, userInfo:[NSLocalizedDescriptionKey:"Health goal cannot be found"])
     }
 }
 
+func fetchAdmin () async throws -> String{
+    guard let uid = Auth.auth().currentUser?.uid else { throw NSError(domain: "com.yourcompany.dailyDose", code: 0)}
+    
+    let userDB = Firestore.firestore().collection("user").document(uid)
+    let snapshot = try await userDB.getDocument()
+    
+    if let isAdmin = snapshot.get("isAdmin") as? String{
+        return isAdmin //return admin status if found
+    }else{
+        throw NSError(domain: "com.yourcompany.dailyDose", code: 0, userInfo:[NSLocalizedDescriptionKey:"Health goal cannot be found"])
+    }
+    
+}
 
 
 #Preview {

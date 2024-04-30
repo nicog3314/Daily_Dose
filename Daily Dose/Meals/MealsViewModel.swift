@@ -9,7 +9,6 @@ import Foundation
 import FirebaseFirestore
 import FirebaseFirestoreSwift
 
-
 @MainActor
 //Maniplulating the meals from database
 class MealsViewModel: ObservableObject{
@@ -17,15 +16,15 @@ class MealsViewModel: ObservableObject{
     private let  db = Firestore.firestore()
     @Published var meals = [Meals] ()
     
-    func addBulkMeal(meal: Meals){
+    func addBulkMeal(name: String, ingredients: [String], calories: Int, protein: Int, fats: Int, imageURL:String ){
         //creates a generated ID for the new documents added/created
         db.collection("bulkMeals").addDocument(data: [
-            "name": meal.name,
-            "ingredients": meal.ingredient,
-            "calories": meal.calories,
-            "proteins": meal.protein,
-            "fats": meal.fats,
-            "imageURL": meal.imageURL
+            "name": name,
+            "ingredients":ingredients,
+            "calories": calories,
+            "protein": protein,
+            "fats": fats,
+            "imageURL": imageURL
         ])
         
     }
@@ -43,7 +42,7 @@ class MealsViewModel: ObservableObject{
                 let name = data["name"] as? String ?? ""
                 let ingredient = data["ingredients"] as? [String] ?? [""]
                 let calories = data["calories"] as? Int ?? 0
-                let protein = data["proteins"] as? Int ?? 0
+                let protein = data["protein"] as? Int ?? 0
                 let carbs = data["carbs"] as? Int ?? 0
                 let fats = data["fats"] as? Int ?? 0
                 let imageURL = data["imageURL"] as? String ?? ""
@@ -57,15 +56,15 @@ class MealsViewModel: ObservableObject{
     
    
 
-    func addCutMeal(meal: Meals){
+    func addCutMeal(name: String, ingredients: [String], calories: Int, protein: Int, fats: Int, imageURL:String ){
         //creates generated id for the new documents added/created
         db.collection("cutMeals").addDocument(data: [
-            "name": meal.name,
-            "ingredients": meal.ingredient,
-            "calories": meal.calories,
-            "proteins": meal.protein,
-            "fats": meal.fats,
-            "imageURL": meal.imageURL
+            "name": name,
+            "ingredients": ingredients,
+            "calories": calories,
+            "protein": protein,
+            "fats": fats,
+            "imageURL": imageURL
         ])
     }
     
@@ -82,7 +81,7 @@ class MealsViewModel: ObservableObject{
                 let name = data["name"] as? String ?? ""
                 let ingredient = data["ingredients"] as? [String] ?? [""]
                 let calories = data["calories"] as? Int ?? 0
-                let protein = data["proteins"] as? Int ?? 0
+                let protein = data["protein"] as? Int ?? 0
                 let carbs = data["carbs"] as? Int ?? 0
                 let fats = data["fats"] as? Int ?? 0
                 let imageURL = data["imageURL"] as? String ?? ""
