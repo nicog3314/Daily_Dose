@@ -19,7 +19,7 @@ class BulkCalc{
                 let carbs = Int(Double(calorieIntake) * 0.5 / 4) // 50% of calories from carbs (4 calories per gram)
                 let fats = Int(Double(calorieIntake) * 0.3 / 9) // 30% of calories from fats (9 calories per gram)
                 
-                // Example workout plan based on weight
+                // workout plan based on weight
                 var workoutPlan = ""
                 if weight < 150 {
                     workoutPlan = "3 days a week of weightlifting"
