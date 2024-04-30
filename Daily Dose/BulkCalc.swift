@@ -12,7 +12,7 @@ class BulkCalc{
     func calcPlan(weight: Int){
         
         // Example formula for calculating daily calorie intake
-                let calorieIntake = weight * 20 // Adjust this multiplier as needed
+                let calorieIntake = weight * 20 
                 
                 // Example formula for calculating macronutrient distribution
                 let protein = Int(Double(weight) * 1.2) // 1.2 grams per pound of body weight
